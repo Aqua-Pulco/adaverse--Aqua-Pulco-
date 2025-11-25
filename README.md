@@ -1,36 +1,173 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+PROJECT ROOT (RACINE)
+│
+├── next.config.ts        ← réglages du compilateur Next
+├── package.json           ← dépendances, scripts npm
+├── drizzle.config.ts      ← ⭐ CONFIG DU CLI DRIZZLE
+│                             utilisé dans le TERMINAL
+│
+├── .env                   ← secrets (ex: DATABASE_URL)
+│
+├── drizzle/               ← ⭐ MIGRATIONS (générées)
+│   ├── migrations/        ← fichiers SQL
+│   └── meta/              ← snapshots (mémoire du schéma)
+│
+└── src/
+    │
+    ├── app/               ← ROUTER NEXT (pages, API, layouts)
+    │   ├── page.tsx       ← composants serveur ou client
+    │   ├── api/           ← ⭐ RUNTIME SERVEUR
+    │   │   └── ...        ← où on fait db.select(), etc.
+    │   └── ...            
+    │
+    ├── db/
+    │   ├── schema.ts      ← ⭐ TON SCHÉMA (tables)
+    │   └── drizzle.ts     ← ⭐ CONNEXION À NEON (runtime)
+    │
+    └── components/        ← composants React (client)
 
-## Getting Started
+---
 
-First, run the development server:
+# ✅ TODO A — Mise en place du projet
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. Initialiser le projet local
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* [X] Créer dossier local (`adaverse-iris` par ex.)
+* [X] `npx create-next-app@latest --typescript`
+* [X] Choisir Tailwind, TypeScript, ESLint, React Compiler, `src/` YES
+* [X] Vérifier le projet tourne : `npm run dev`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Git
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* [X] Créer un repo GitHub `adaverse-[pseudo]`
+* [X] Relier ton dossier :
+  `git remote add origin <url-du-repo>`
+* [X] Faire un premier commit (+ push)
+* [X] Créer **2 branches** :
+  `main` (versions stables)
+  `work` (branche de ravail)
 
-## Learn More
+### 3. Neon
 
-To learn more about Next.js, take a look at the following resources:
+* [X] Créer un projet Neon
+* [X] Copier la connection string
+* [X] Mettre dans `.env` :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```
+  DATABASE_URL="la-string-neon"
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Installer Drizzle
 
-## Deploy on Vercel
+* [X] `npm install drizzle-orm drizzle-kit neon-serverless`
+* [X] Créer dossier `src/db`
+* [X] Créer `src/db/schema.ts`
+* [ ] Créer `src/db/index.ts` (connexion à Neon)
+* [X] Créer `drizzle.config.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+À ce stade, tu as une **base propre**, solide, prête.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# ✅ TODO B — Base de données (Neon + Drizzle)
+
+### 1. Définir ton schéma
+
+Créer **3 tables** dans `schema.ts` :
+
+* [ ] `adaProjects` (liste des projets du programme Ada)
+* [ ] `promotions` (Frida, Ada 2025, etc.)
+* [ ] `studentProjects` (les projets envoyés via le formulaire)
+
+### 2. Créer migrations
+
+* [ ] `npx drizzle-kit generate`
+* [ ] `npx drizzle-kit push` → envoie sur Neon
+* [ ] Vérifier sur Neon que les tables sont là
+
+### 3. Seed SQL
+
+Dans `/drizzle/seeds` :
+
+* [ ] Un fichier `1-promotions.sql`
+
+* [ ] Un fichier `2-ada-projects.sql`
+
+* [ ] Un fichier `3-publish.sql` (UPDATE avec date publication)
+
+* [ ] Exécuter les seeds via Neon Dashboard ou `psql`
+
+Une fois ça fait → ta base est **vivante**, peuplée, testable.
+
+---
+
+# ✅ TODO C — Implémentation des fonctionnalités (front + back)
+
+### 1. API routes (backend)
+
+Créer un dossier `src/app/api/` :
+
+* [ ] `/api/post-project` → POST
+  enregistre un projet envoyé depuis le formulaire
+* [ ] `/api/published-projects` → GET
+  renvoie tous les projets où `publishedAt` n’est pas null
+* [ ] `/api/project/[slug]` → GET
+  renvoie un projet par slug
+
+### 2. Front — Page d’accueil
+
+* [ ] Afficher tous les projets publiés
+* [ ] Groupés par projet Ada
+* [ ] Trier par date de publication (desc)
+* [ ] Afficher image GitHub (`thumbnail.png`) ou image par défaut
+* [ ] Bouton “Proposer un projet” dans le header
+
+### 3. Popup + Formulaire
+
+* [ ] Créer un composant `ProjectDialog.tsx`
+* [ ] Champs : titre, GitHub, démo, promo, projet Ada
+* [ ] Validation (si champs vides → message d’erreur)
+* [ ] Form action → envoie vers `/api/post-project`
+
+### 4. Page de détail d’un projet
+
+* [ ] Route dynamique : `src/app/projects/[slug]/page.tsx`
+* [ ] Récupérer avec params.slug
+* [ ] Afficher tout : titre, image, promo, dates, liens
+
+### 5. Navigation
+
+* [ ] Logo → page d’accueil
+* [ ] Cartes → pages de détail
+* [ ] Link de Next → navigation client
+
+À ce stade → **site complet fonctionnel**, évaluable en soutenance.
+
+---
+
+# ✅ TODO D — Déploiement sur Vercel
+
+### 1. Déploiement initial
+
+* [ ] Connecter ton repo GitHub à Vercel
+* [ ] Déployer la branche `stable`
+
+### 2. Environnement
+
+* [ ] Ajouter la variable `DATABASE_URL` dans Vercel → **exactement** la même que dans `.env`
+
+### 3. Tests
+
+* [ ] Tester la page d’accueil
+* [ ] Tester la popup
+* [ ] Tester la création d’un projet
+* [ ] Tester la page de détail
+
+### 4. Déployer la branche bonus quand prête
+
+* [ ] Ajouter les bonus uniquement après validation stable
+* [ ] Pousser la branche `bonus`
+* [ ] Déployer une Preview branch sur Vercel
+
+---
+
+
