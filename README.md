@@ -1,11 +1,14 @@
+```
 PROJECT ROOT (RACINE)
 │
 ├── next.config.ts        ← réglages du compilateur Next
 ├── package.json           ← dépendances, scripts npm
-├── drizzle.config.ts      ← ⭐ CONFIG DU CLI DRIZZLE
-│                             utilisé dans le TERMINAL
 │
 ├── .env                   ← secrets (ex: DATABASE_URL)
+│
+│
+├── drizzle.config.ts      ← ⭐ CONFIG DU CLI DRIZZLE
+│                             utilisé dans le TERMINAL
 │
 ├── drizzle/               ← ⭐ MIGRATIONS (générées)
 │   ├── migrations/        ← fichiers SQL
@@ -24,6 +27,8 @@ PROJECT ROOT (RACINE)
     │   └── drizzle.ts     ← ⭐ CONNEXION À NEON (runtime)
     │
     └── components/        ← composants React (client)
+    └── ...
+```
 
 ---
 
@@ -59,10 +64,10 @@ PROJECT ROOT (RACINE)
 ### 4. Installer Drizzle
 
 * [X] `npm install drizzle-orm drizzle-kit neon-serverless`
-* [X] Créer dossier `src/db`
-* [X] Créer `src/db/schema.ts`
-* [ ] Créer `src/db/index.ts` (connexion à Neon)
-* [X] Créer `drizzle.config.ts`
+* [X] Créer dossier `src/db` (app)
+* [X] Créer `src/db/schema.ts` (creation tables)
+* [X] Créer `src/db/drizzle.ts` (connexion à Neon)
+* [X] Créer `drizzle.config.ts` (CLI)
 
 À ce stade, tu as une **base propre**, solide, prête.
 
