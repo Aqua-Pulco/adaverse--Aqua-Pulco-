@@ -1,3 +1,4 @@
+```
 PROJECT ROOT (RACINE)
 │
 ├── next.config.ts        ← réglages du compilateur Next
@@ -24,6 +25,7 @@ PROJECT ROOT (RACINE)
     │   └── drizzle.ts     ← ⭐ CONNEXION À NEON (runtime)
     │
     └── components/        ← composants React (client)
+```
 
 ---
 
