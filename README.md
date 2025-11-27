@@ -1,4 +1,11 @@
+/promotions                   ← liste de toutes les promotions
+/promotions/[slug]            ← page d’une promo (bio + projets)
 
+/ada-projects                 ← liste projets Ada
+/ada-projects/[slug]          ← page d’un projet Ada (catégorie)
+
+/projects                     ← liste projets étudiants (optionnel)
+/projects/[slug]              ← page d’un projet étudiant
 ---
 
 # ✅ TODO A — Mise en place du projet
@@ -48,9 +55,9 @@
 
 Créer **3 tables** dans `schema.ts` :
 
-* [ ] `adaProjects` (liste des projets du programme Ada)
-* [ ] `promotions` (Frida, Ada 2025, etc.)
-* [ ] `studentProjects` (les projets envoyés via le formulaire)
+* [X] `adaProjects` (liste des projets du programme Ada)
+* [X] `promotions` (Frida, Ada 2025, etc.)
+* [X] `studentProjects` (les projets envoyés via le formulaire)
 
 ### 2. Créer migrations
 
