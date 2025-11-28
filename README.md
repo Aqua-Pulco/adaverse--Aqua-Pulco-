@@ -61,9 +61,9 @@ Créer **3 tables** dans `schema.ts` :
 
 ### 2. Créer migrations
 
-* [ ] `npx drizzle-kit generate`
-* [ ] `npx drizzle-kit push` → envoie sur Neon
-* [ ] Vérifier sur Neon que les tables sont là
+* [X] `npx drizzle-kit generate`
+* [X] `npx drizzle-kit push` → envoie sur Neon
+* [X] Vérifier sur Neon que les tables sont là
 
 ### 3. Seed SQL
 
