@@ -109,7 +109,7 @@ c'est comme une sorte de ***git data.***
 
 __________
 
-**nota bene raccourcis react : trfc ...**
+**nota bene raccourcis ne : trfc**
 __________
 
 <br>

@@ -1,19 +1,21 @@
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 
 
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+export default function RootLayout({ children, }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body>
-        
-          {children}
-  
+
+        <Navbar />
+             {children}
+        <Header/>
+
       </body>
-    </html>
+    </html >
   );
 }
