@@ -51,9 +51,10 @@ pgTable, integer etc... from import auto
 ```tsx
 export const nom_de_variable_Table = pgTable("nom_de_table", { ... })
 ```
+
 ______
 ### declarer les id de table
-systematique pour les id:
+systematique pour les id :
 
 ```tsx
 {
@@ -87,11 +88,30 @@ ________
 foreignKeyColumn: typeDuConstructeur("nom_sql").references(() => autreTable.colonne)
 
 ```
+_________
+### Publier les tables 
+pour connaitre les commandes :
+>npm run
+
+nous on va utiliser :
+> **db:generate** & **db:push**
+
+le premier génère la table le second crée les tables sur Neon<br>
+c'est comme une sorte de ***git data.***
+>**db:generate** = git add. + git commit = historique<br>on peut y acceder avant/apres publication si pb<br>
+(dossier drizzle > migrations > meta)
+
+>**db:push** = git push = MAJ REELE dans la db = execute le SQL.
+
+
+
+<br>
+
+__________
 
 **nota bene raccourcis react : trfc ...**
 __________
-<br>
-<br>
+
 <br>
 <br>
 <br>
@@ -100,30 +120,46 @@ __________
 
 # LES ROUTES NEXT
 
-### (nom_de_dossier)
-nom de dossier regroupant une fonction (AUTH)
-sous dossier "connexion" "inscription" ...
+### ***Dans l'arborescence :***
+    @/nom_dossier/page.tsx
+    @/api/nom_dossier/route.tsx
+    = une page front / une route back
+    = une URL
+pour la partie composants:
+
+>**"use client"** = composant exécuté dans le navigateur
+>→ useState, useEffect, onClick, formulaires
+
+>**Sans "use client"** = composant exécuté côté serveur
+>→ plus rapide, peut fetcher directement la DB
+_________
+
+<br>
+
+# SYNTAXES
+### /(nom_de_dossier)
+(AUTH) = nom de dossier regroupant une fonction :<br>
+"connexion", "inscription" ... = sous dossiers. <br>
 AUTH n'apparait pas ds l'url mais 
-    /connexion
-    /inscription
+<br>    /connexion
+<br>    /inscription
 
 
 
-### [PARAM] routes dynamiques
-
+### / [PARAMS] (routes dynamiques)
     lorsqu'on veut ouvrir une page differente pour un nombre considerables de projets
-    on crée une route [id] qui va afficher le projet en fonction de l'id
-    ou une route [slug] qui va afficher le projet en fonction du slug ...
+    on crée une route [id] qui va afficher le projet en fonction de l'id présente ds la db
+    ou une route [slug] qui va afficher le projet en fonction du slug associé ds la db...
+    etc.
 
-forme:
-    **trfc**
+"params" est une **fonction standard** fournie par Next<br>
+Next détecte les crochets [ ] et comprend :<br>
+“Cette route est dynamique → elle a un paramètre d’URL”<br>
+***"params"*** est la clef que Next utilise pour te passer la valeur du dossier [***truc***].
 
 ```tsx
-    props: {
-        params: {
-            id: string
-        }
-    }
+    props: 
+    { params: { id: string }};
 
     export default function Page({params}: props) {
         console.log(params.id)
@@ -131,6 +167,19 @@ forme:
         // ou return <div>{params.slug}</div>
     }
 ```
+on peut empiler les segments dynamiques mais jamais les cumuler au meme endroit:
+>   src/app/projects/[***promo***]/[***slug***]/page.tsx
+
+Next fournit :
+
+```tsx
+params = {
+  promo: "frida",
+  slug: "ada-quiz"
+}
+```
+
+
 <br>
 <br>
 
@@ -141,7 +190,7 @@ forme:
 - 2 quelle donnée est concernée ? 
 - 3 quelle méthode HTTP ? (GET/POST/PUT/DELETE)
 
-    **1 route = une action précise**
+    **1 action utilisateur = 1 route API = 1 fichier route.ts**
 
 <br>
 
@@ -264,7 +313,7 @@ export async function GET(){
 va demander **(GET)**<br>
 à la **db** toute les lignes de cette table (rows),<br >
 **fais moi un paquet JSON**,<br>
-renvoie le a **icelle** qui a fait la demande (NextResponse)
+renvoie le a *icelle* qui a fait la demande (***NextResponse***)
 
 <br>
 <br>
