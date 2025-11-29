@@ -1,0 +1,13 @@
+
+POST http://localhost:3000/api/post-project
+Content-Type: application/json
+
+{
+  "slug": "test",
+  "imageUrl": "",
+  "title": "test",
+  "githubUrl": "test",
+  "projectUrl": "test",
+  "promoId": 1,
+  "adaProjectId": 1
+}

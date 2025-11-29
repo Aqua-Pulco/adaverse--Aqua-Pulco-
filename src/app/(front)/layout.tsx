@@ -1,6 +1,6 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
+import FloatingButton from "@/components/FloatingButton";
 
 
 
@@ -9,11 +9,14 @@ export default function RootLayout({ children, }: Readonly<{
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="relative">
 
         <Navbar />
-             {children}
-        <Header/>
+
+        <FloatingButton>Click me</FloatingButton>
+
+        {children}
+
 
       </body>
     </html >
