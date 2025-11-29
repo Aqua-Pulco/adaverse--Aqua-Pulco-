@@ -10,3 +10,5 @@ export async function POST(req: Request){
     await db.insert(studentProjects).values(body);
     return NextResponse.json({ok: true})
 }
+
+//NEXT FORMULAIRE !! 
