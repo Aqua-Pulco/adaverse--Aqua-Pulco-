@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "quizz",
+    "projectName": "Quizz",
+    "description": "Projet DOM interactif JavaScript : application de quiz utilisant un fichier JSON local, avec affichage des questions, gestion des réponses, calcul du score et interface HTML/CSS.",
+    "imageUrl": null
+  },
+  {
+    "slug": "dataviz",
+    "projectName": "Dataviz",
+    "description": "Projet d’initiation aux API : utilisation de fetch avec try/catch, récupération d’un jeu de données externe, transformation des données et affichage visuel en JavaScript.",
+    "imageUrl": null
+  },
+  {
+    "slug": "adaence",
+    "projectName": "Adaence",
+    "description": "Projet multi-pages en HTML, CSS et JavaScript basé sur une maquette fournie. Le site présente des profils de personnes âgées isolées et permet la navigation entre l’accueil, la liste et la recherche. Le projet inclut la manipulation du DOM, la génération de cartes, l’utilisation d’URLSearchParams pour filtrer les profils, et la conception d’un premier schéma de base de données simple.",
+    "imageUrl": null
+  },
+  {
+    "slug": "adaction",
+    "projectName": "Adaction",
+    "description": "Projet full-stack avec Express.js : application mettant en scène des ONG et des bénévoles autour de collectes de déchets. Le projet comprend un CRUD complet pour créer, afficher, modifier et supprimer des actions.",
+    "imageUrl": null
+  },
+  {
+    "slug": "checkevents",
+    "projectName": "CheckEvents",
+    "description": "Projet réalisé avec React : récupération d’une API publique d’événements, affichage des résultats et filtrage dynamique en fonction de l’état local et du rendu conditionnel.",
+    "imageUrl": null
+  },
+  {
+    "slug": "adaverse",
+    "projectName": "Adaverse",
+    "description": "Projet avec Next.js, React et Drizzle ORM : plateforme permettant de présenter les projets des apprenant·es. Le projet inclut une base de données, des routes API, une structure de promotions et de catégories, et une interface de navigation complète.",
+    "imageUrl": null
+  }
+]
