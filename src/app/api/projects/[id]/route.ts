@@ -9,7 +9,7 @@ type Context = {
     },
 }
 
-export async function GET (_:Request, {params}:Context){
+export async function GET (req_:Request, {params}:Context){
 
     const {id} = await params;
 

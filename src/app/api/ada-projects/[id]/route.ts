@@ -11,7 +11,7 @@ type Context ={
 
 
 // GET all ada projects
-export async function GET(_: Request, {params}: Context){
+export async function GET(_req: Request, {params}: Context){
     console.log("params->", await params)
     const {id} = await params
    

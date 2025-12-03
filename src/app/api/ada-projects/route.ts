@@ -14,13 +14,6 @@ export async function POST(req: Request) {
         })
     }
 
-    if (!body.slug || !body.projectName) {
-        return NextResponse.json({
-            error: "slug and projectName are missing notNull",
-            status: 400
-        })
-    }
-
     await db.insert(adaProjects).values(body);
     return NextResponse.json({ ok: true, message: "ada project created" })
 }
