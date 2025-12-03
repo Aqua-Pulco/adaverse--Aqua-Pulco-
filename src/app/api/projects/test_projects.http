@@ -1,13 +1,19 @@
 
-POST http://localhost:3000/api/post-project
-Content-Type: application/json
+# POST http://localhost:3000/api/project
+# Content-Type: application/json
 
-{
-  "slug": "test",
-  "imageUrl": "",
-  "title": "test",
-  "githubUrl": "test",
-  "projectUrl": "test",
-  "promoId": 1,
-  "adaProjectId": 1
-}
+# {
+#   "slug": "test",
+#   "imageUrl": "",
+#   "title": "test",
+#   "githubUrl": "test",
+#   "projectUrl": "test",
+#   "promoId": 1,
+#   "adaProjectId": 1
+# }
+
+GET http://localhost:3000/api/projects/3
+Content-Type: "application/json"
+
+
+

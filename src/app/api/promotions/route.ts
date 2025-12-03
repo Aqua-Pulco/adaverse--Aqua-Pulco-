@@ -10,3 +10,9 @@ export async function POST(req: Request){
 
 }
 
+
+// GET all promos
+export async function GET(){
+    const rows = await db.select().from(adaPromotions)
+    return NextResponse.json(rows)
+}
