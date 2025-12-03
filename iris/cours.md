@@ -318,6 +318,76 @@ renvoie le a *icelle* qui a fait la demande (***NextResponse***)
 <br>
 <br>
 
+# route GET [dynamique]
+
+```bash
+src/app/api/projects/[id]/route.ts
+```
+```ts
+export async function GET(_, { params }) {
+  const project = await db
+    .select()
+    .from(adaProjects)
+    .where(eq(adaProjects.id, Number(params.id)));
+
+  if (project.length === 0)
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+
+  return NextResponse.json(project[0]);
+}
+```
+retenir 
+# NEXT donne :
+```ts
+export async function GET(request, context) {}
+```
+- ***request*** = l’objet Request (URL, headers, body, methode http…)
+
+- ***context*** = un objet fourni par Next contenant : params (comme : [id], [slug] etc.)
+
+> ...et parfois d’autres choses (revalidate, etc)
+
+quand quelqu'un appelle :
+```bash
+ /api/projects/12
+```
+next construit un objet :
+```tsx
+const context = {
+  params: {
+    id: "12"
+  },
+  // plus tard peut-être d'autres champs…
+}
+
+```
+ca donne :
+```ts
+GET(req, { params: { id: "12" } })
+```
+>  ### _
+>signifie : ***passe*** cet argument <br>
+>*(placeholder qui signifie : ignore cette variable)*
+
+et donc l'écriture :
+```ts
+GET(_, {params}) 
+
+```
+équivaut à :<br>
+
+GET(~~request~~, context)<br>
+
+autrement dit: <br>
+{params} = context.params <br>
+detructuration de context pour obtenir params
+
+
+
+
+<br>
+<br>
+
 # route POST
 créer
 
@@ -349,33 +419,6 @@ ici : j'ai bien rangé le paquet
 <br>
 <br>
 
-# route GET avec SLUG
-lire specifique info
-```tsx
-import {NextResponse} from "next/server"
-import {db} from "@/db/drizzle" 
-import {maTable} from "@/db/schema"
-import {eq} from "drizzle-orm"
-
-export async function GET(_req, { params }) {
-  const row = await db.select().from(maTable).where(eq(maTable.slug, params.slug));
-  return NextResponse.json(row[0]);
-}
-
-```
-1) je recois une URL avec un slug
-<br>
-    → http://localhost:3000/api/quiz/ada-quiz
-<br>
-    (par ex. "ada-quiz")
-
-2) je vais chercher dans la base de donnée
-<br>
-    → le slug = params.slug
-
-3) je renvoie la ligne qui correspond au slug en JSON
-
-<br>
 
 # route PUT
 modifie
@@ -388,4 +431,139 @@ supprime
 ```tsx
 
 ```
+
+<br>
+<br>
+<br>
+
+
+# Les codes ERREUR HTTP
+
+| Code    | Nom                   | Quand l’utiliser                           |
+| ------- | --------------------- | ------------------------------------------ |
+| **400** | Bad Request           | Le body manque, les champs sont incorrects |
+| **404** | Not Found             | L’élément n’existe pas dans la DB          |
+| **409** | Conflict              | Contrainte violée (slug déjà pris)         |
+| **422** | Unprocessable Entity  | Le body JSON est invalide                  |
+| **500** | Internal Server Error | Une erreur interne Drizzle / SQL           |
+
+<br>
+
+## Outils NextResponse
+envoyer une erreur
+```ts
+return NextResponse.json({ error: "message" }, { status: 400 });
+```
+
+
+<br>
+<br>
+<br>
+
+---
+Voici ton texte **identique**, **sans rien modifier**,
+avec simplement **l’ajout EXACT où il faut** des deux règles :
+
+* **types primitifs = minuscules**
+* **types custom = PascalCase**
+
+Je n’ai rien touché d’autre.
+Juste inséré le bloc au bon endroit logique : **après l’intro des règles générales**, avant les exemples.
+
+---
+
+# TYPAGE
+
+### typer variable
+
+**1)** nom<br>
+**2)** : type<br>
+**3)** = valeur<br><br>
+
+### typer fonction
+
+**1)** nom<br>
+**2)** (valeur entrée/params : type) <br>
+**3)** (params) : type valeur sortie {...} (return)<br><br>
+
+---
+
+### *RÈGLES DE CASSE*
+
+**→ les types primitifs : toujours en minuscules**
+
+```
+string
+number
+boolean
+```
+
+**→ les custom types : toujours en PascalCase**
+
+```
+type User = { name: string }
+type Project = { slug: string }
+type Context = { params: { id: string } }
+```
+---
+
+<br>
+
+### typer les objets / CUSTOM TYPE (réutilisable)
+
+**1)** type NomType = {<br>
+clef1: type;<br>
+clef2: type;<br>
+etc.<br>
+}<br><br>*ou*<br><br>
+
+**2)** interface NomType {<br>
+clef1: type;<br>
+clef2: type;<br>
+etc.<br>
+}<br>
+
+---
+
+<br>
+
+### typer un composant
+
+*mix entre typer fonction et typer objet*<br>
+
+> **ATTENTION :** params ≠ props<br>
+
+**1)** type TrucProps = {<br>
+param1: type;<br>
+param2: type;<br>
+...<br>
+}<br>
+
+```tsx
+export async function Truc({param1,param2}:TrucProps){
+    ...
+    return ...
+}
+```
+
+---
+
+<br>
+
+### typer un HOOK
+
+retenir :
+
+> ### typer toutes les v. potentielles / valeur initiale / *<*chevrons*>*
+
+```tsx
+const [truc, setTruc] = useState<type>(valeurs);
+
+<NomType[]> // = tableau
+<NomType{}> // = objet ...
+```
+
+---
+
+
 

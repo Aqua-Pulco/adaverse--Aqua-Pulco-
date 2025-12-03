@@ -87,7 +87,7 @@ Une fois ça fait → ta base est **vivante**, peuplée, testable.
 
 Créer un dossier `src/app/api/` :
 
-* [ ] `/api/post-project` → POST
+* [X] `/api/post-project` → POST
   enregistre un projet envoyé depuis le formulaire
 * [ ] `/api/published-projects` → GET
   renvoie tous les projets où `publishedAt` n’est pas null
