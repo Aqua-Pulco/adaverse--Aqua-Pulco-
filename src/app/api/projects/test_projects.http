@@ -1,0 +1,185 @@
+
+# POST http://localhost:3000/api/projects
+# Content-Type: application/json
+
+# [
+#   {
+#     "slug": "panam-events",
+#     "imageUrl": null,
+#     "title": "Panam'Events",
+#     "githubUrl": "https://github.com/FPrud/Panam-Events",
+#     "projectUrl": "https://panamevents-adatechschool.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 5
+#   },
+#   {
+#     "slug": "cineducoin",
+#     "imageUrl": null,
+#     "title": "CineDuCoin",
+#     "githubUrl": "https://github.com/FPrud/CineDuCoin",
+#     "projectUrl": "https://cineducoinadatechschool.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 2
+#   },
+#   {
+#     "slug": "quizoiseaux",
+#     "imageUrl": null,
+#     "title": "QuizOiseaux",
+#     "githubUrl": "https://github.com/PEYREGuillaume34/Quiz",
+#     "projectUrl": "https://quiz-ten-eosin.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 1
+#   },
+#   {
+#     "slug": "adacheckevent-v1",
+#     "imageUrl": null,
+#     "title": "AdacheckEvent",
+#     "githubUrl": "https://github.com/PEYREGuillaume34/AdaCheck-Event",
+#     "projectUrl": "https://ada-check-event.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 5
+#   },
+#   {
+#     "slug": "adacheckevent-adaction",
+#     "imageUrl": null,
+#     "title": "AdacheckEvent",
+#     "githubUrl": "https://github.com/PEYREGuillaume34/AdaCheck-Event",
+#     "projectUrl": "https://ada-check-event.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 4
+#   },
+#   {
+#     "slug": "evenement-paris",
+#     "imageUrl": null,
+#     "title": "Evenement à Paris",
+#     "githubUrl": "https://github.com/ValotKzm/vercel_adacheck_vc_ys",
+#     "projectUrl": "https://verceladacheckvcys.vercel.app",
+#     "promoId": 3,
+#     "adaProjectId": 5
+#   },
+#   {
+#     "slug": "tataouine",
+#     "imageUrl": null,
+#     "title": "Tataouine",
+#     "githubUrl": "https://github.com/Samir3200/Tataouine",
+#     "projectUrl": "https://tataouine.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 6
+#   },
+#   {
+#     "slug": "adacheckevent-alexis-samir",
+#     "imageUrl": null,
+#     "title": "AdaCheckEvent",
+#     "githubUrl": "https://github.com/Samir3200/AdaCheckEvent-Alexis-Samir",
+#     "projectUrl": "https://ada-check-event-alexis-samir.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 5
+#   },
+#   {
+#     "slug": "conseil-intermarche",
+#     "imageUrl": null,
+#     "title": "Conseil Intermarché",
+#     "githubUrl": "https://github.com/algosup/2024-2025-project-5-bubble-intermarche-team-1.git",
+#     "projectUrl": "https://2024-2025-projet-5-team-1.bubbleapps.io/version-test",
+#     "promoId": 3,
+#     "adaProjectId": 6
+#   },
+#   {
+#     "slug": "quiz-code",
+#     "imageUrl": null,
+#     "title": "Quiz Code",
+#     "githubUrl": "https://github.com/Sosow20/Quiz_project",
+#     "projectUrl": "https://fridaquizproject.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 1
+#   },
+#   {
+#     "slug": "adacheckevent-v2",
+#     "imageUrl": null,
+#     "title": "AdaCheckEvent",
+#     "githubUrl": "https://github.com/Sosow20/AdaCheckEvent_project",
+#     "projectUrl": "https://fridaadacheckeventproject.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 5
+#   },
+#   {
+#     "slug": "openfoodfacts-scanner",
+#     "imageUrl": null,
+#     "title": "OpenFoodFacts Api / Scanner produit",
+#     "githubUrl": "https://github.com/Sosow20/Dataviz_project",
+#     "projectUrl": "https://fridadatavizproject.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 2
+#   },
+#   {
+#     "slug": "adaence-marine",
+#     "imageUrl": null,
+#     "title": "Adaence",
+#     "githubUrl": "https://github.com/Marinegrn/ADAENCE_MVP",
+#     "projectUrl": "",
+#     "promoId": 2,
+#     "adaProjectId": 3
+#   },
+#   {
+#     "slug": "mastermind-marine",
+#     "imageUrl": null,
+#     "title": "Mastermind",
+#     "githubUrl": "https://github.com/Marinegrn/ExoMastermind",
+#     "projectUrl": "https://mastermind-sigma.vercel.app/",
+#     "promoId": 2,
+#     "adaProjectId": 6
+#   },
+#   {
+#     "slug": "adaverse-frida",
+#     "imageUrl": null,
+#     "title": "Adaverse",
+#     "githubUrl": "https://github.com/adatechschool/frida-adaverse-Mamoru-fr.git",
+#     "projectUrl": "https://frida-adaverse-mamoru-fr.vercel.app",
+#     "promoId": 3,
+#     "adaProjectId": 6
+#   },
+#   {
+#     "slug": "quiz-frida",
+#     "imageUrl": null,
+#     "title": "Quiz Frida",
+#     "githubUrl": "https://github.com/Xinzhu99/Quiz_Frida",
+#     "projectUrl": "https://quiwfrida.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 1
+#   },
+#   {
+#     "slug": "adaopte-xinzhu",
+#     "imageUrl": null,
+#     "title": "Adaopte",
+#     "githubUrl": "https://github.com/Xinzhu99/Adaopte",
+#     "projectUrl": "https://xinzhu.fr/adaopte/",
+#     "promoId": 3,
+#     "adaProjectId": 3
+#   },
+#   {
+#     "slug": "quizz-capitale",
+#     "imageUrl": null,
+#     "title": "Quizz-Capitale",
+#     "githubUrl": "https://github.com/Abdelcrks/Quizz-Capitale",
+#     "projectUrl": "https://quizz-capitale.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 1
+#   },
+#   {
+#     "slug": "parigo",
+#     "imageUrl": null,
+#     "title": "Parigo",
+#     "githubUrl": "https://github.com/Abdelcrks/Parigo",
+#     "projectUrl": "https://parigo.vercel.app/",
+#     "promoId": 3,
+#     "adaProjectId": 5
+#   }
+# ]
+
+
+# GET http://localhost:3000/api/projects
+# Content-Type: "application/json"
+
+GET http://localhost:3000/api/projects/3
+Content-Type: "application/json"
+

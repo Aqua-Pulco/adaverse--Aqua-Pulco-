@@ -1,0 +1,42 @@
+# POST http://localhost:3000/api/promotions
+# Content-Type: application/json
+
+# [
+#   {
+#     "slug": "promo-fatoumata-kebe-sept-2024",
+#     "promotionName": "Septembre 2024 – Fatoumata Kébé",
+#     "imageUrl": "https://raw.githubusercontent.com/Aqua-Pulco/adaverse--Aqua-Pulco-/refs/heads/work/public/promo-pictures/Fatoumata-Kebe.jpg",
+#     "startDate": "2024-09-01",
+#     "bio": "Fatoumata Kébé, née en 1985 à Montreuil (Seine-Saint-Denis), est une astrophysicienne française spécialisée dans l’étude des débris spatiaux. Elle découvre l’astronomie dans l’enfance grâce à une encyclopédie trouvée chez son père. Après une licence en mécanique puis un master en mécanique des fluides à l’université Pierre-et-Marie-Curie, elle poursuit une spécialisation en ingénierie spatiale à l’Université de Tokyo. En 2016, elle soutient une thèse à l’Observatoire de Paris portant sur la modélisation des trajectoires de débris spatiaux. Elle fonde l’association Éphémérides pour démocratiser l’accès à l’astronomie dans des quartiers populaires en France et au Mali, et crée le projet Connected Eco récompensé par l’Union internationale des télécommunications. Figure engagée, elle incarne une science ouverte, accessible et socialement utile. (Wikipédia : https://fr.wikipedia.org/wiki/Fatoumata_K%C3%A9b%C3%A9)"
+#   },
+#   {
+#     "slug": "promo-frances-spence-janv-2025",
+#     "promotionName": "Janvier 2025 – Frances Spence",
+#     "imageUrl": "https://raw.githubusercontent.com/Aqua-Pulco/adaverse--Aqua-Pulco-/refs/heads/work/public/promo-pictures/Frances-Bilas-Spence.jpg",
+#     "startDate": "2025-01-01",
+#     "bio": "Frances V. Spence (née Bilas, 1922–2012) est l’une des premières programmeuses de l’histoire de l’informatique. Diplômée en mathématiques et physique du Chestnut Hill College en 1942, elle est recrutée pendant la Seconde Guerre mondiale pour calculer les trajectoires balistiques de l’armée américaine. Elle rejoint ensuite l’équipe de l’ENIAC, premier ordinateur électronique numérique à usage général, où elle conçoit avec cinq autres programmeuses les schémas logiques et connexions permettant à la machine d’exécuter des calculs complexes. Longtemps ignoré, son travail est désormais reconnu comme fondateur dans l’histoire du logiciel et de la programmation. (Wikipédia : https://fr.wikipedia.org/wiki/Frances_Spence)"
+#   },
+#   {
+#     "slug": "promo-frida-kahlo-mai-2025",
+#     "promotionName": "Mai 2025 – Frida Kahlo",
+#     "imageUrl": "https://raw.githubusercontent.com/Aqua-Pulco/adaverse--Aqua-Pulco-/refs/heads/work/public/promo-pictures/Frida-Kahlo.jpg",
+#     "startDate": "2025-05-01",
+#     "bio": "Frida Kahlo (1907–1954) est une peintre mexicaine dont l’œuvre autobiographique et symbolique est devenue emblématique au XXe siècle. Gravement blessée dans un accident à l’âge de 18 ans, elle commence à peindre pendant sa convalescence. Son style singulier mêle culture mexicaine, introspection, imaginaire populaire et représentation du corps, souvent marqué par la douleur. Bien qu’associée au surréalisme, elle affirmait peindre sa réalité plutôt que ses rêves. Son influence dépasse largement l’art : elle est devenue une figure de résilience, d’identité et de liberté créatrice. (Wikipédia : https://fr.wikipedia.org/wiki/Frida_Kahlo)"
+#   },
+#   {
+#     "slug": "promo-grace-hopper-sept-2025",
+#     "promotionName": "Septembre 2025 – Grace Hopper",
+#     "imageUrl": "https://raw.githubusercontent.com/Aqua-Pulco/adaverse--Aqua-Pulco-/refs/heads/work/public/promo-pictures/Grace-Hopper.jpg",
+#     "startDate": "2025-09-01",
+#     "bio": "Grace Murray Hopper (1906–1992) est une informaticienne et contre-amiral de la marine américaine, pionnière du génie logiciel. Docteure en mathématiques de Yale en 1934, elle rejoint pendant la Seconde Guerre mondiale l’équipe du Harvard Mark I. Elle conçoit ensuite l’un des premiers compilateurs, A-0, qui traduit des symboles en instructions machine, ouvrant la voie aux langages de programmation de haut niveau. Elle participe à la création de COBOL, pensé pour les usages commerciaux et administratifs. Reconnue pour sa pédagogie et son influence majeure, elle est considérée comme l’une des fondatrices de l’informatique moderne. (Wikipédia : https://fr.wikipedia.org/wiki/Grace_Hopper)"
+#   }
+# ]
+
+
+
+# GET http://localhost:3000/api/promotions
+# Content-Type: application/json
+
+
+GET http://localhost:3000/api/promotions/1
+Content-Type: application/json

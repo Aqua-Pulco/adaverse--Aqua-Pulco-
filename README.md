@@ -1,35 +1,11 @@
-```
-PROJECT ROOT (RACINE)
-│
-├── next.config.ts        ← réglages du compilateur Next
-├── package.json           ← dépendances, scripts npm
-│
-├── .env                   ← secrets (ex: DATABASE_URL)
-│
-│
-├── drizzle.config.ts      ← ⭐ CONFIG DU CLI DRIZZLE
-│                             utilisé dans le TERMINAL
-│
-├── drizzle/               ← ⭐ MIGRATIONS (générées)
-│   ├── migrations/        ← fichiers SQL
-│   └── meta/              ← snapshots (mémoire du schéma)
-│
-└── src/
-    │
-    ├── app/               ← ROUTER NEXT (pages, API, layouts)
-    │   ├── page.tsx       ← composants serveur ou client
-    │   ├── api/           ← ⭐ RUNTIME SERVEUR
-    │   │   └── ...        ← où on fait db.select(), etc.
-    │   └── ...            
-    │
-    ├── db/
-    │   ├── schema.ts      ← ⭐ TON SCHÉMA (tables)
-    │   └── drizzle.ts     ← ⭐ CONNEXION À NEON (runtime)
-    │
-    └── components/        ← composants React (client)
-    └── ...
-```
+/promotions                   ← liste de toutes les promotions
+/promotions/[slug]            ← page d’une promo (bio + projets)
 
+/ada-projects                 ← liste projets Ada
+/ada-projects/[slug]          ← page d’un projet Ada (catégorie)
+
+/projects                     ← liste projets étudiants (optionnel)
+/projects/[slug]              ← page d’un projet étudiant
 ---
 
 # ✅ TODO A — Mise en place du projet
@@ -79,15 +55,15 @@ PROJECT ROOT (RACINE)
 
 Créer **3 tables** dans `schema.ts` :
 
-* [ ] `adaProjects` (liste des projets du programme Ada)
-* [ ] `promotions` (Frida, Ada 2025, etc.)
-* [ ] `studentProjects` (les projets envoyés via le formulaire)
+* [X] `adaProjects` (liste des projets du programme Ada)
+* [X] `promotions` (Frida, Ada 2025, etc.)
+* [X] `studentProjects` (les projets envoyés via le formulaire)
 
 ### 2. Créer migrations
 
-* [ ] `npx drizzle-kit generate`
-* [ ] `npx drizzle-kit push` → envoie sur Neon
-* [ ] Vérifier sur Neon que les tables sont là
+* [X] `npx drizzle-kit generate`
+* [X] `npx drizzle-kit push` → envoie sur Neon
+* [X] Vérifier sur Neon que les tables sont là
 
 ### 3. Seed SQL
 
@@ -111,7 +87,7 @@ Une fois ça fait → ta base est **vivante**, peuplée, testable.
 
 Créer un dossier `src/app/api/` :
 
-* [ ] `/api/post-project` → POST
+* [X] `/api/post-project` → POST
   enregistre un projet envoyé depuis le formulaire
 * [ ] `/api/published-projects` → GET
   renvoie tous les projets où `publishedAt` n’est pas null
