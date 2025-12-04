@@ -89,9 +89,9 @@ Créer un dossier `src/app/api/` :
 
 * [X] `/api/post-project` → POST
   enregistre un projet envoyé depuis le formulaire
-* [ ] `/api/published-projects` → GET
+* [X] `/api/published-projects` → GET
   renvoie tous les projets où `publishedAt` n’est pas null
-* [ ] `/api/project/[slug]` → GET
+* [X] `/api/project/[id]` → GET
   renvoie un projet par slug
 
 ### 2. Front — Page d’accueil
