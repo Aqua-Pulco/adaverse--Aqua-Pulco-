@@ -1,154 +1,164 @@
-/promotions                   ← liste de toutes les promotions
-/promotions/[slug]            ← page d’une promo (bio + projets)
 
-/ada-projects                 ← liste projets Ada
-/ada-projects/[slug]          ← page d’un projet Ada (catégorie)
+---
 
-/projects                     ← liste projets étudiants (optionnel)
-/projects/[slug]              ← page d’un projet étudiant
+# 🌐 ADAVERSE — TODO LIST
+
+---
+
+# 📘 TODO 0 — Cours / Notions cochables
+
+## Drizzle / SQL
+
+* [x] Schéma général du projet
+* [x] Structure migrations Drizzle
+* [x] CRUD Drizzle : select / insert / update / delete
+* [ ] Seeds SQL
+
+## Next.js — API Routes
+
+* [x] GET statique
+* [x] GET dynamique `[id]`
+* [x] POST
+* [x] PUT (entier)
+* [x] DELETE
+* [x] PATCH (partiel)
+* [ ] PATCH publish `/api/projects/[id]/publish`
+
+## Next.js — Architecture
+
+* [x] Routes dynamiques `[slug]`
+* [x] Notion de server component
+* [x] Notion de client component
+* [x] Diagramme UX
+* [x] Diagramme architecture front/back
+
+## Fetch (formes génériques)
+
+* [ ] Fetch GET server component
+* [ ] Fetch GET client component
+* [ ] Fetch POST client
+* [ ] Fetch PATCH client
+* [ ] Fetch DELETE client
+
 ---
 
 # ✅ TODO A — Mise en place du projet
 
-### 1. Initialiser le projet local
-
-* [X] Créer dossier local (`adaverse-iris` par ex.)
-* [X] `npx create-next-app@latest --typescript`
-* [X] Choisir Tailwind, TypeScript, ESLint, React Compiler, `src/` YES
-* [X] Vérifier le projet tourne : `npm run dev`
-
-### 2. Git
-
-* [X] Créer un repo GitHub `adaverse-[pseudo]`
-* [X] Relier ton dossier :
-  `git remote add origin <url-du-repo>`
-* [X] Faire un premier commit (+ push)
-* [X] Créer **2 branches** :
-  `main` (versions stables)
-  `work` (branche de ravail)
-
-### 3. Neon
-
-* [X] Créer un projet Neon
-* [X] Copier la connection string
-* [X] Mettre dans `.env` :
-
-  ```
-  DATABASE_URL="la-string-neon"
-  ```
-
-### 4. Installer Drizzle
-
-* [X] `npm install drizzle-orm drizzle-kit neon-serverless`
-* [X] Créer dossier `src/db` (app)
-* [X] Créer `src/db/schema.ts` (creation tables)
-* [X] Créer `src/db/drizzle.ts` (connexion à Neon)
-* [X] Créer `drizzle.config.ts` (CLI)
-
-À ce stade, tu as une **base propre**, solide, prête.
+* [x] Initialisation Next.js (`create-next-app`)
+* [x] Git : repo + remote + branches main/work
+* [x] Neon : base + DATABASE_URL
+* [x] Drizzle : config + schema + drizzle.ts
 
 ---
 
-# ✅ TODO B — Base de données (Neon + Drizzle)
+# ✅ TODO B — Base de données
 
-### 1. Définir ton schéma
+Dossier : `drizzle/seeds/`
 
-Créer **3 tables** dans `schema.ts` :
-
-* [X] `adaProjects` (liste des projets du programme Ada)
-* [X] `promotions` (Frida, Ada 2025, etc.)
-* [X] `studentProjects` (les projets envoyés via le formulaire)
-
-### 2. Créer migrations
-
-* [X] `npx drizzle-kit generate`
-* [X] `npx drizzle-kit push` → envoie sur Neon
-* [X] Vérifier sur Neon que les tables sont là
-
-### 3. Seed SQL
-
-Dans `/drizzle/seeds` :
-
-* [ ] Un fichier `1-promotions.sql`
-
-* [ ] Un fichier `2-ada-projects.sql`
-
-* [ ] Un fichier `3-publish.sql` (UPDATE avec date publication)
-
-* [ ] Exécuter les seeds via Neon Dashboard ou `psql`
-
-Une fois ça fait → ta base est **vivante**, peuplée, testable.
+* [ ] Créer `1-promotions.sql`
+* [ ] Créer `2-ada-projects.sql`
+* [ ] Créer `3-publish.sql`
+* [ ] Exécuter les seeds dans Neon
 
 ---
 
-# ✅ TODO C — Implémentation des fonctionnalités (front + back)
+# 🧱 TODO C — Backend (API)
 
-### 1. API routes (backend)
+Dossier : `src/app/api/...`
 
-Créer un dossier `src/app/api/` :
+## Routes du projet
 
-* [X] `/api/post-project` → POST
-  enregistre un projet envoyé depuis le formulaire
-* [X] `/api/published-projects` → GET
-  renvoie tous les projets où `publishedAt` n’est pas null
-* [X] `/api/project/[id]` → GET
-  renvoie un projet par slug
-
-### 2. Front — Page d’accueil
-
-* [ ] Afficher tous les projets publiés
-* [ ] Groupés par projet Ada
-* [ ] Trier par date de publication (desc)
-* [ ] Afficher image GitHub (`thumbnail.png`) ou image par défaut
-* [ ] Bouton “Proposer un projet” dans le header
-
-### 3. Popup + Formulaire
-
-* [ ] Créer un composant `ProjectDialog.tsx`
-* [ ] Champs : titre, GitHub, démo, promo, projet Ada
-* [ ] Validation (si champs vides → message d’erreur)
-* [ ] Form action → envoie vers `/api/post-project`
-
-### 4. Page de détail d’un projet
-
-* [ ] Route dynamique : `src/app/projects/[slug]/page.tsx`
-* [ ] Récupérer avec params.slug
-* [ ] Afficher tout : titre, image, promo, dates, liens
-
-### 5. Navigation
-
-* [ ] Logo → page d’accueil
-* [ ] Cartes → pages de détail
-* [ ] Link de Next → navigation client
-
-À ce stade → **site complet fonctionnel**, évaluable en soutenance.
+* [x] `/api/ada-projects` (GET, POST)
+* [x] `/api/ada-projects/[id]` (GET)
+* [x] `/api/promotions` (GET, POST)
+* [x] `/api/promotions/[id]` (GET)
+* [x] `/api/projects` (GET, POST)
+* [x] `/api/projects/[id]` (GET)
+* [ ] `/api/projects/[id]/` (PATCH)
 
 ---
 
-# ✅ TODO D — Déploiement sur Vercel
+# 🎨 TODO D — Pages Front (mobile-first)
 
-### 1. Déploiement initial
+### Home — `src/app/page.tsx`
 
-* [ ] Connecter ton repo GitHub à Vercel
-* [ ] Déployer la branche `stable`
+* [ ] GET projets publiés (server component)
+* [ ] Tri `publishedAt desc`
+* [ ] Groupe par projet Ada
+* [ ] Afficher image GitHub ou fallback
+* [ ] Bouton “Proposer un projet”
 
-### 2. Environnement
+### Promotions — `src/app/promotions/page.tsx`
 
-* [ ] Ajouter la variable `DATABASE_URL` dans Vercel → **exactement** la même que dans `.env`
+* [ ] GET promotions
 
-### 3. Tests
+### Promotion Detail — `src/app/promotions/[slug]/page.tsx`
 
-* [ ] Tester la page d’accueil
-* [ ] Tester la popup
-* [ ] Tester la création d’un projet
-* [ ] Tester la page de détail
+* [ ] GET promotion via slug
+* [ ] Afficher bio
+* [ ] Afficher projets publiés liés
 
-### 4. Déployer la branche bonus quand prête
+### Ada Projects — `src/app/ada-projects/page.tsx`
 
-* [ ] Ajouter les bonus uniquement après validation stable
-* [ ] Pousser la branche `bonus`
-* [ ] Déployer une Preview branch sur Vercel
+* [ ] GET projets Ada
+
+### Ada Project Detail — `src/app/ada-projects/[slug]/page.tsx`
+
+* [ ] GET projets étudiants liés
+
+### Projects (optionnel) — `src/app/projects/page.tsx`
+
+* [ ] GET projets étudiants
+
+### Project Detail — `src/app/projects/[slug]/page.tsx`
+
+* [ ] GET projet via slug
+* [ ] Afficher titre
+* [ ] Afficher image
+* [ ] Afficher promotion
+* [ ] Afficher projet Ada
+* [ ] Afficher dates
+* [ ] Lien GitHub
+* [ ] Lien démo
 
 ---
 
+# 🧩 TODO E — Formulaire (popup)
+
+Dossier : `src/components/ProjectDialog.tsx`
+
+* [x] Créer le composant
+* [ ] useState : titre
+* [ ] useState : githubUrl
+* [ ] useState : projectUrl
+* [ ] useState : slug
+* [ ] Select promotions — GET `/api/promotions`
+* [ ] Select projets Ada — GET `/api/ada-projects`
+* [ ] Validation des champs requis
+* [ ] POST `/api/projects`
+* [ ] Reset du formulaire
+* [ ] Fermer la popup
+
+---
+
+# 🧭 TODO F — Navigation
+
+* [ ] Logo → `<Link href="/">` dans `Navbar.tsx`
+* [ ] Cartes projet → `<Link href="/projects/[slug]">`
+* [ ] Navigation mobile-first
+
+---
+
+# 🚀 TODO G — Déploiement
+
+* [ ] Connecter repo GitHub à Vercel
+* [ ] Déployer branche `stable`
+* [ ] Ajouter `DATABASE_URL` dans Vercel
+* [ ] Tester Home
+* [ ] Tester Popup
+* [ ] Tester POST project
+* [ ] Tester Project Detail
+* [ ] Déployer branche `bonus`
+
+---
 

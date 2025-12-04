@@ -66,9 +66,9 @@ Pour mener à bien ce projet, il est nécessaire de maîtriser :
 
 ### Back / BDD
 
--   [ ] Je sais intégrer et utiliser une ORM avec NextJS
--   [ ] Je sais connecter mon ORM avec ma base de données
--   [ ] Je sais créer une base de donnée à partir d'un schéma
+-   [X] Je sais intégrer et utiliser une ORM avec NextJS
+-   [X] Je sais connecter mon ORM avec ma base de données
+-   [X] Je sais créer une base de donnée à partir d'un schéma
 -   [ ] Je sais visualiser et modifier des données dans la base de données
 -   [ ] Je comprends le fonctionnement d'un ORM (mapping object relationnel)
 -   [ ] Je sais modéliser une base de données à partir d'un énoncé

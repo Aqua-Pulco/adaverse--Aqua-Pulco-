@@ -343,9 +343,10 @@ export async function GET(request, context) {}
 ```
 - ***request*** = l’objet Request (URL, headers, body, methode http…)
 
-- ***context*** = un objet fourni par Next contenant : params (comme : [id], [slug] etc.)
+- ***context*** = un objet fourni par Next contenant : params (comme : [id], [slug] etc.) <br> 
 
-> ...et parfois d’autres choses (revalidate, etc)
+>***context.params REPRESENTE UNIQUEMENT LES PARAMETRES URL***
+
 
 quand quelqu'un appelle :
 ```bash
@@ -419,17 +420,76 @@ ici : j'ai bien rangé le paquet
 <br>
 <br>
 
+# PATCH[id]
+
+PATCH = mise à jour **partielle** ≠ PUT
+> on ne remplace pas toute la ligne, on change **uniquement certains champs**.
+<br>
+
+
+```ts
+import {eq, sql} from "drizzle-orm"
+
+
+export async function PATCH (_req:Request, {params}:Context){
+
+    const {id} = await params;
+
+await db.update(table).set({ colonne: valeur }).where(eq(table.id, id));
+return NextResponse.json({ok: true});
+
+}
+```
+<br>
+
+Obligatoire : `.where()` n’existe pas tant que `.set()` n’a pas été appelé.<br><br>
+
+
+### Drizzle : `new Date()`<br>
+
+vs
+### SQL : sql `NOW()`<br>
+
+
+
+| Forme         |  date  générée  | Particularité          |
+| ------------- | ------------------------ | ---------------------- |
+| `new Date()`  | Serveur Next.js          | temps appli (API) |
+| `sql\`NOW()`` | Serveur PostgreSQL       | temps de la db (PostgreSQL) |
+
+<br>
+
+<br>
+
 
 # route PUT
-modifie
+modifie toute la ligne (entrée complète)
 ```tsx
+export async function PUT(req, { params }) {
+  const { id } = params;
+  const body = await req.json(); // doit contenir toutes les colonnes nécessaires
 
+  await db
+    .update(maTable)
+    .set(body)
+    .where(eq(maTable.id, Number(id)));
+
+  return NextResponse.json({ ok: true });
+}
 ```
 
 # route DELETE
 supprime
 ```tsx
+export async function DELETE(_req, { params }) {
+  const { id } = params;
 
+  await db
+    .delete(maTable)
+    .where(eq(maTable.id, Number(id)));
+
+  return NextResponse.json({ ok: true });
+}
 ```
 
 <br>
@@ -459,6 +519,8 @@ return NextResponse.json({ error: "message" }, { status: 400 });
 <br>
 <br>
 <br>
+
+
 
 ---
 

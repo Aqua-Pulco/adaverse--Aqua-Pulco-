@@ -63,6 +63,7 @@ project tree
 │   │           └── test_promotions.http
 │   ├── components
 │   │   ├── Button.tsx
+│   │   ├── ProjectDialog.tsx
 │   │   ├── FloatingButton.tsx
 │   │   └── Navbar.tsx
 │   └── db
@@ -262,7 +263,10 @@ const Navbar = () => {
 
 export default Navbar
 ```
+..src/components/ProjectForm.tsx
+```tsx
 
+```
 
 
 
